@@ -10,7 +10,7 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 - Code
 - Bounding Box
 
-**How to use**
+### How to Use
 
 1. Inspect the csv file with metadata to check if it includes all the columns listed below
 2. If the target state(s) hasn't included city or county bounding box files, you may need to 
@@ -42,7 +42,7 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 
 
 
-### More Explanations based on each error
+### More Explanations Based on Each Error
 
 1. **404 - Not Found**
 
@@ -98,13 +98,13 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 
 
 
-## Obtain File size
+## Obtain File Size
 
 The default content length is in **Byte**, currently it has been converted into **MB** and rounded to 4 decimal places.
 
 
 
-## Something you may want to know 
+## Something You May Want to Know 
 
 ### Why create county bounding box GeoJSON?
 
