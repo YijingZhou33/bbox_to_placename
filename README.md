@@ -30,7 +30,7 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 
 ## Handling URL Errors
 
-#### Error Summary
+### Error Summary
 
 | Error                        | Access Landing Page? | Access Download Link or ImageServer? | Solution                       |
 | ---------------------------- | :------------------: | :----------------------------------: | ------------------------------ |
@@ -42,7 +42,7 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 
 
 
-#### More Explanations based on each error
+### More Explanations based on each error
 
 1. **404 - Not Found**
 
@@ -60,11 +60,11 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 
      We can access the landing page, but there’s something wrong with the download link on the server side.
 
-   -  **Solution** 
+   - **Solution** 
 
      Provide the data source without the download link. Let users decide if they want to download other types of data.
 
-3.  **Wrong File Type** -- [Vector Data] *Not a shapefile*
+3. **Wrong File Type** -- [Vector Data] *Not a shapefile*
 
    - **Reason** 
 
@@ -88,13 +88,13 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 
    - **Reason** 
 
-     This is the most ambiguous one. In order to improve the efficiency of web scraping, **`timeout`** is necessary to prevent the script waiting forever. If it does not get a response within a particular time period, just move to the next one. Failure to do so can cause the program to hang indefinitely. 
+      This is the most ambiguous one. In order to improve the efficiency of web scraping, **`timeout`** is necessary to prevent the script waiting forever. If it does not get       a response within a particular time period, just move to the next one. Failure to do so can cause the program to hang indefinitely. 
 
-     The servers can become slow and unresponsive for many reasons. One reason might be the **gigantic file size**. According to the Python library [**Requests**](https://requests.readthedocs.io/en/master/user/advanced/) , when making a request, the body of the response (the entire file) is downloaded immediately. But **`timeout`** is not a time limit on the *entire response download*; rather, an exception is raised if the server has not issued a response for **`timeout`** seconds ( more precisely, this is the time before the server sends the first byte). 
+     The servers can become slow and unresponsive for many reasons. One reason might be the **gigantic file size**. According to the Python library [**Requests**]                  (https://requests.readthedocs.io/en/master/user/advanced/) , when making a request, the body of the response (the entire file) is downloaded immediately. But                  **`timeout`** is not a time limit on the *entire response download*; rather, an exception is raised if the server has not issued a response for **`timeout`** seconds (        more precisely, this is the time before the server sends the first byte). 
 
    - **Solution**
 
-     Try setting **`timeout`** as **3 seconds** first, and push all the records with timeout error into a new list. Then increase **`timeout`** up to **10 seconds** and loop through the list, most of the links will get a response. If still get some unresponsive ones, manually check it in case accidently delete any valid records. Those records will be flagged in the “**Title**” column using something like “*Manually check it!*”.
+     Try setting **`timeout`** as **3 seconds** first, and push all the records with timeout error into a new list. Then increase **`timeout`** up to **10 seconds** and loop      through the list, most of the links will get a response. If still get some unresponsive ones, manually check it in case accidently delete any valid records. Those            records will be flagged in the “**Title**” column using something like “*Manually check it!*”.
 
 
 
@@ -106,13 +106,13 @@ The default content length is in **Byte**, currently it has been converted into 
 
 ## Something you may want to know 
 
-#### Why create county bounding box GeoJSON?
+### Why create county bounding box GeoJSON?
 
 A Bounding box is typically described as an array of two coordinate pairs: **SW** (the minimum longitude and latitude) and **NE** (the maximum longitude and latitude). Therefore, the rectangle area it represents always exceeds the real one and overlaps each other. It may cause problems especially for features sharing the same border like counties. 
 
 If we spatial join the bounding box of records with accurate county boundaries, there's a great chance of returning place names which actually have no spatial relationship. In order to improve the accuracy, we need to use regular rectangle area for both join features and target features. 
 
-#### How to determine spatial coverage?
+### How to determine spatial coverage?
 
 <a href='https://geopandas.org/reference/geopandas.sjoin.html'>`geopandas.sjoin`</a> provides three match options: **intersects**, **contains** and **within**. The flow chart below demonstrates the decision-making process:
 
