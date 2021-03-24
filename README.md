@@ -1,6 +1,6 @@
 # Populating Spatial Coverage for DCAT Data Portals
 
-This repository is for populating spatial coverage for records only with a bounding box. It is a reverse version of **<a href='https://github.com/BTAA-Geospatial-Data-Project/geonames'>geonames</a>** repository. 
+This repository is for populating spatial coverage for records only with a bounding box. It is a reverse version of **<a href='https://github.com/YijingZhou33/geonames'>geonames</a>** repository. 
 
 The scripts can also be used for querying any records formatted in GBL Metadata Template. However, an adjustment to the names of the harvested metadata fields may be required first:
 
@@ -99,7 +99,12 @@ Here are all dependencies needed to be installed properly:
 
       This is the most ambiguous one. In order to improve the efficiency of web scraping, **`timeout`** is necessary to prevent the script waiting forever. If it does not get       a response within a particular time period, just move to the next one. Failure to do so can cause the program to hang indefinitely. 
 
+<<<<<<< HEAD
      The servers can become slow and unresponsive for many reasons. One reason might be the **gigantic file size**. According to the Python library [**Requests**](https://requests.readthedocs.io/en/master/user/advanced/), when making a request, the body of the response (the entire file) is downloaded immediately. But                  **`timeout`** is not a time limit on the *entire response download*; rather, an exception is raised if the server has not issued a response for **`timeout`** seconds (more precisely, this is the time before the server sends the first byte). 
+=======
+     The servers can become slow and unresponsive for many reasons. One reason might be the **gigantic file size**. According to the Python library 
+     **[Requests](https://requests.readthedocs.io/en/master/user/advanced/)** , when making a request, the body of the response (the entire file) is downloaded immediately.        But **`timeout`** is not a time limit on the *entire response download*; rather, an exception is raised if the server has not issued a response for **`timeout`** seconds      (more precisely, this is the time before the server sends the first byte). 
+>>>>>>> fd6440580272426ea0d96b8b4d951680302d3742
 
    - **Solution**
 
