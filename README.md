@@ -10,6 +10,20 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 - Code
 - Bounding Box
 
+### Environment Setup
+
+We We will be using **Anaconda 3** to edit and run scripts. Information on Anaconda installation can be found [here](https://docs.anaconda.com/anaconda/install/).  All packages available for 64-bit Windows with Python 3.7 in the Anaconda can be found [here](https://docs.anaconda.com/anaconda/packages/py3.7_win-64/). Please note that all scripts are running on Python 3 (**3.7.6**).
+
+Here are all dependencies needed to be installed properly: 
+
+- [geopandas](https://geopandas.org/getting_started/install.html) [Version: 0.7.0]
+
+- [shapely](https://pypi.org/project/Shapely/) [Version: 1.7.0]
+
+- [requests](https://requests.readthedocs.io/en/master/user/install/#install) [Version: 2.22.0]
+
+- [numpy](https://numpy.org/install/) [Version: 1.18.1]
+
 ### How to Use
 
 1. Inspect the csv file with metadata to check if it includes all the columns listed below
@@ -19,12 +33,7 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
       - if there exists regional data portals, you may need to run `merge_geojsons.ipynb` to merge them together
       - Note that manual changes are required for `city_boundary.ipynb` based on attributes. 
    3. run `city_bbox.ipynb` or `county_bbox.ipynb` to create bounding box GeoJSONs
-
 3. Run `sjoin.ipynb` 
-
-
-
-*<a href="https://github.com/BTAA-Geospatial-Data-Project/bbox_to_placename">Original Repository</a>*
 
 
 
@@ -90,7 +99,7 @@ The scripts can also be used for querying any records formatted in GBL Metadata 
 
       This is the most ambiguous one. In order to improve the efficiency of web scraping, **`timeout`** is necessary to prevent the script waiting forever. If it does not get       a response within a particular time period, just move to the next one. Failure to do so can cause the program to hang indefinitely. 
 
-     The servers can become slow and unresponsive for many reasons. One reason might be the **gigantic file size**. According to the Python library [**Requests**]                  (https://requests.readthedocs.io/en/master/user/advanced/) , when making a request, the body of the response (the entire file) is downloaded immediately. But                  **`timeout`** is not a time limit on the *entire response download*; rather, an exception is raised if the server has not issued a response for **`timeout`** seconds (        more precisely, this is the time before the server sends the first byte). 
+     The servers can become slow and unresponsive for many reasons. One reason might be the **gigantic file size**. According to the Python library [**Requests**](https://requests.readthedocs.io/en/master/user/advanced/), when making a request, the body of the response (the entire file) is downloaded immediately. But                  **`timeout`** is not a time limit on the *entire response download*; rather, an exception is raised if the server has not issued a response for **`timeout`** seconds (more precisely, this is the time before the server sends the first byte). 
 
    - **Solution**
 
